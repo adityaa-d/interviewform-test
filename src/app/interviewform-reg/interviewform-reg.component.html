@@ -1,0 +1,413 @@
+<!-- HEADER DIV -->
+<div style="padding: 10px; background: rgb(64, 146, 253); color: white">
+  <h3 style="margin: 0px;">Applicant Registration</h3>
+</div>
+<!-- HEADER DIV -->
+
+<!-- FORM DIV -->
+<div style="margin-top: 1rem; width: 100%">
+  <form
+    class="example-form"
+    style="border: 1px solid #fff; width: 100%"
+    [formGroup]="applicantForm"
+    (ngSubmit)="onSubmit()"
+  >
+    <div style="padding: 1rem; max-width: 100%">
+      <div style="display: flex; align-items: center; gap: 1rem; width: 100%">
+        <mat-form-field
+          style="width: 100%; max-width: 200px"
+          class="example-full-width"
+        >
+          <mat-label>Applicant No.</mat-label>
+          <input
+            #APP_NO
+            formControlName="APP_NO"
+            matInput
+            placeholder="Applicant No."
+            maxlength="10"
+          />
+          <mat-hint align="end"> {{ APP_NO.value.length }}/10 </mat-hint>
+          <mat-error *ngIf="applicantForm.get('APP_NO').hasError('required')"
+            >Applicant No is required.</mat-error
+          >
+          <mat-error *ngIf="applicantForm.get('APP_NO').hasError('maxLength')"
+            >Applicant No cannot be greater than 10.</mat-error
+          >
+        </mat-form-field>
+
+        <mat-form-field style="width: 100%; max-width: 200px; min-width: 200px">
+          <mat-label>Choose a date</mat-label>
+          <input matInput formControlName="APP_DATE" [matDatepicker]="picker" />
+          <!-- <mat-hint>MM/DD/YYYY</mat-hint> -->
+          <mat-datepicker-toggle
+            matIconSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" style="width: 100%">
+          <mat-label>Applicant Name.</mat-label>
+          <input
+            #APP_NAME
+            formControlName="APP_NAME"
+            matInput
+            placeholder="Applicant Name."
+            maxlength="250"
+          />
+          <mat-hint align="end"> {{ APP_NAME.value.length }}/250 </mat-hint>
+          <mat-error *ngIf="applicantForm.get('APP_NAME').hasError('required')"
+            >Applicant Name is required.</mat-error
+          >
+          <mat-error *ngIf="applicantForm.get('APP_NAME').hasError('maxLength')"
+            >Applicant No cannot be greater than 250.</mat-error
+          >
+        </mat-form-field>
+      </div>
+
+      <div
+        style="
+          display: flex;
+          align-items: center;
+          gap: 1rem;
+          width: 100%;
+          margin-top: 1rem;
+        "
+      >
+        <mat-form-field class="example-full-width" style="width: 100%">
+          <mat-label>Applicant Position.</mat-label>
+          <input
+            #APP_POSITION
+            formControlName="APP_POSITION"
+            matInput
+            placeholder="Applicant Position."
+            maxlength="250"
+          />
+          <mat-hint align="end"> {{ APP_POSITION.value.length }}/250 </mat-hint>
+          <mat-error
+            *ngIf="applicantForm.get('APP_POSITION').hasError('required')"
+            >Applicant Position is required.</mat-error
+          >
+          <mat-error
+            *ngIf="applicantForm.get('APP_POSITION').hasError('maxLength')"
+            >Applicant Position cannot be greater than 250.</mat-error
+          >
+        </mat-form-field>
+      </div>
+
+      <div
+        style="
+          display: flex;
+          align-items: center;
+          gap: 1rem;
+          width: 100%;
+          margin-top: 1rem;
+        "
+      >
+        <mat-form-field style="width: 100%; max-width: 200px; min-width: 200px">
+          <mat-label>DOB</mat-label>
+          <input
+            matInput
+            formControlName="APP_DOB"
+            [matDatepicker]="pickerDOB"
+          />
+          <!-- <mat-hint>MM/DD/YYYY</mat-hint> -->
+          <mat-datepicker-toggle
+            matIconSuffix
+            [for]="pickerDOB"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #pickerDOB></mat-datepicker>
+          <mat-error *ngIf="applicantForm.get('APP_DOB').hasError('required')"
+            >Applicant DOB is required.</mat-error
+          >
+        </mat-form-field>
+
+        <mat-form-field
+          style="width: 100%; max-width: 200px"
+          class="example-full-width"
+        >
+          <mat-label>Applicant Age.</mat-label>
+          <input
+            #APP_AGE
+            formControlName="APP_AGE"
+            matInput
+            placeholder="Applicant Age."
+          />
+
+          <mat-error *ngIf="applicantForm.get('APP_AGE').hasError('required')"
+            >Applicant Age is required.</mat-error
+          >
+        </mat-form-field>
+
+        <mat-form-field
+          style="width: 100%; max-width: 200px"
+          class="example-full-width"
+        >
+          <mat-label>Gender</mat-label>
+          <input
+            #APP_GENDER
+            formControlName="APP_GENDER"
+            matInput
+            placeholder="Applicant Gender"
+            maxlength="15"
+          />
+          <mat-hint align="end">{{ APP_GENDER.value.length }}/15</mat-hint>
+          <mat-error
+            *ngIf="applicantForm.get('APP_GENDER').hasError('required')"
+            >Applicant Gender is required.</mat-error
+          >
+        </mat-form-field>
+
+        <mat-form-field
+          style="width: 100%; max-width: 300px"
+          class="example-full-width"
+        >
+          <mat-label>Mobile No</mat-label>
+          <input
+            #APP_MOB
+            formControlName="APP_MOB"
+            matInput
+            placeholder="Applicant Mobile"
+            maxlength="15"
+          />
+          <mat-hint align="end">{{ APP_MOB.value.length }}/15</mat-hint>
+
+          <mat-error *ngIf="applicantForm.get('APP_MOB').hasError('pattern')"
+            >Applicant Mobile cannot contain alphabets.</mat-error
+          >
+        </mat-form-field>
+
+        <mat-form-field style="width: 100%" class="example-full-width">
+          <mat-label>Email</mat-label>
+          <input
+            #APP_EMAIL
+            formControlName="APP_EMAIL"
+            matInput
+            placeholder="Email"
+            maxlength="50"
+          />
+          <mat-hint align="end">{{ APP_EMAIL.value.length }}/50</mat-hint>
+
+          <mat-error *ngIf="applicantForm.get('APP_EMAIL').hasError('email')"
+            >Applicant Email is Invalid</mat-error
+          >
+        </mat-form-field>
+      </div>
+
+      <div
+        style="
+          display: flex;
+          align-items: center;
+          gap: 1rem;
+          width: 100%;
+          margin-top: 1rem;
+        "
+      >
+        <mat-form-field
+          style="width: 100%; max-width: 300px"
+          class="example-full-width"
+        >
+          <mat-label>Experience</mat-label>
+          <input
+          type="number"
+            #APP_NOYEARS
+            formControlName="APP_NOYEARS"
+            matInput
+            placeholder="Experience"
+          />
+
+          <mat-error
+            *ngIf="applicantForm.get('APP_NOYEARS').hasError('pattern')"
+            >Experience cannot contain alphabets.</mat-error
+          >
+        </mat-form-field>
+
+        <mat-form-field
+          style="width: 100%; max-width: 300px"
+          class="example-full-width"
+        >
+          <mat-label>Reason to leave current job</mat-label>
+          <input
+            #APP_REASON
+            formControlName="APP_REASON"
+            matInput
+            placeholder="Reason to leave current job"
+            maxlength="250"
+          />
+
+          <mat-error
+            *ngIf="applicantForm.get('APP_REASON').hasError('maxLength')"
+            >Reason cannot contain more than 250 characters.</mat-error
+          >
+        </mat-form-field>
+      </div>
+      <mat-form-field
+        style="width: 100%; max-width: 100%"
+        class="example-full-width"
+      >
+        <mat-label>Reason to leave current job</mat-label>
+        <input
+          #APP_REASON
+          formControlName="APP_REASON"
+          matInput
+          placeholder="Reason to leave current job"
+          maxlength="250"
+        />
+
+        <mat-error *ngIf="applicantForm.get('APP_REASON').hasError('maxLength')"
+          >Reason cannot contain more than 250 characters.</mat-error
+        >
+        <!-- <mat-hint align="end">{{ APP_REASON.value.length }}/250</mat-hint> -->
+      </mat-form-field>
+
+      <div
+        style="
+          display: flex;
+          align-items: center;
+          gap: 1rem;
+          width: 100%;
+          margin-top: 1rem;
+        "
+      >
+        <mat-form-field
+          style="width: 100%; max-width: 600px"
+          class="example-full-width"
+        >
+          <mat-label>Current Company</mat-label>
+          <input
+            #APP_CURRENTEMPLOYER
+            formControlName="APP_CURRENTEMPLOYER"
+            matInput
+            placeholder="Current Company"
+            maxlength="250"
+          />
+        </mat-form-field>
+
+        <mat-form-field
+          style="width: 100%; max-width: 300px"
+          class="example-full-width"
+        >
+          <mat-label>Notice Period</mat-label>
+          <input
+            #APP_NP
+            type="number"
+            formControlName="APP_NP"
+            matInput
+            placeholder="Notice Period"
+            [disabled]="!applicantForm.get('APP_CURRENTEMPLOYER').value"
+          />
+        </mat-form-field>
+      </div>
+      <div
+        style="
+          display: flex;
+          align-items: center;
+          gap: 1rem;
+          width: 100%;
+          margin-top: 1rem;
+        "
+      >
+        <button type="submit" mat-flat-button color="primary">Save</button>
+        <button type="reset" mat-flat-button color="warn">Close</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<!-- FORM DIV -->
+
+<!-- TABLE  -->
+
+<mat-accordion>
+  <mat-expansion-panel expanded="true" (opened)="panelOpenState = true"
+                       (closed)="panelOpenState = false">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Registartion Details
+      </mat-panel-title>
+     
+    </mat-expansion-panel-header>
+    
+<div>
+  <!-- <div style="padding: 10px; font-weight: 700; "><h3>Regestration Details</h3></div> -->
+  <div style="display: flex; align-items: center; padding: 10px">
+    <button  matSuffix mat-icon-button aria-label="Search">
+      <mat-icon>search</mat-icon>
+    </button>
+      <input  style="border: none; height: 45px; width: 80%;" matInput     (input)="updateFilteredItems()" [(ngModel)]="search"  placeholder="Search...">
+  </div>
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource">
+  
+      <!-- Position Column -->
+      <ng-container matColumnDef="SERIAL_NO">
+        <th mat-header-cell *matHeaderCellDef>Si No. </th>
+        <td mat-cell *matCellDef="let element, let i = index"> {{ i + 1 }} </td>
+      </ng-container>
+  
+      <!-- Name Column -->
+      <ng-container matColumnDef="APP_NO">
+        <th mat-header-cell *matHeaderCellDef>Application No </th>
+        <td mat-cell *matCellDef="let element"> {{element?.APP_NO}} </td>
+      </ng-container>
+  
+      <!-- Weight Column -->
+      <ng-container matColumnDef="APP_NAME">
+        <th mat-header-cell *matHeaderCellDef> Name </th>
+        <td mat-cell *matCellDef="let element"> {{element?.APP_NAME}} </td>
+      </ng-container>
+  
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="APP_POSITION">
+        <th mat-header-cell *matHeaderCellDef> Appication position </th>
+        <td mat-cell *matCellDef="let element"> {{element?.APP_POSITION}} </td>
+      </ng-container>
+      <ng-container matColumnDef="APP_NOYEARS">
+        <th mat-header-cell *matHeaderCellDef> Experience </th>
+        <td mat-cell *matCellDef="let element"> {{element?.APP_NOYEARS}} </td>
+      </ng-container>
+      <ng-container matColumnDef="APP_MOB">
+        <th mat-header-cell *matHeaderCellDef> Mobile number </th>
+        <td mat-cell *matCellDef="let element"> {{element?.APP_MOB}} </td>
+      </ng-container>
+      <ng-container matColumnDef="APP_EMAIL">
+        <th mat-header-cell *matHeaderCellDef> Email Id </th>
+        <td mat-cell *matCellDef="let element"> {{element?.APP_EMAIL}} </td>
+      </ng-container>
+      <ng-container matColumnDef="EDIT">
+        <th mat-header-cell *matHeaderCellDef> Edit </th>
+        <td mat-cell *matCellDef="let element"> 
+          <button (click)="onEdit(element)">Edit</button>
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="DELETE">
+        <th mat-header-cell *matHeaderCellDef> Delete </th>
+        <td mat-cell *matCellDef="let element"> 
+           <button (click)="delete(element?.APP_ID)">Delete</button></td>
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  
+    <mat-paginator [pageSize]="25"
+    [pageSizeOptions]="[25, 50, 100]"
+    [length]="dataSource.length"
+    (page)="onPageChange($event)"
+    aria-label="Select page"
+    showFirstLastButtons
+                >
+    </mat-paginator>
+  </div>
+  
+</div>
+  </mat-expansion-panel>
+</mat-accordion>
+<!-- TABLE  -->
+
+<!-- FOOTER -->
+<div>
+  <div style="margin-top: 3rem; border-bottom: 5px solid black; padding: 15px; background: rgb(205, 205, 205); color: rgb(0, 0, 0)">
+    <h4 style="margin: 0px;"> 	&#169; 2020 Frontline Information Technology </h4>
+  </div>
+</div>
