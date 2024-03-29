@@ -295,4 +295,66 @@ updateFilteredItems() {
     this.isEdit = true;
     this.loadForm();
   }
+
+
+  
+// saveOrUpdate() {
+//   const formData = this.interviewForm.value;
+//   const apiUrl = 'http://192.168.1.80:9134/api/Data/Save'; // Assuming the endpoint for save/update
+
+//   // Make HTTP POST request to save/update data
+//   this.http.post(apiUrl, formData)
+//     .pipe(
+//       catchError(error => {
+//         // Handle error
+//         console.error('Error occurred:', error);
+//         return throwError(error);
+//       })
+//     )
+//     .subscribe(response => {
+//       // Handle success response
+//       console.log('Data saved/updated successfully:', response);
+//       // Optionally, reset the form after successful save/update
+//       this.interviewForm.reset();
+//     });
+// }
+
+// delete() {
+//   const appId = this.interviewForm.get('appId').value; // Assuming appId control exists in the form
+//   const apiUrl = `http://192.168.1.80:9134/api/Data/Delete?APP_ID=${appId}`; // Assuming the endpoint for delete
+
+//   // Make HTTP DELETE request to delete data by appId
+//   this.http.delete(apiUrl)
+//     .pipe(
+//       catchError(error => {
+//         // Handle error
+//         console.error('Error occurred:', error);
+//         return throwError(error);
+//       })
+//     )
+//     .subscribe(response => {
+//       // Handle success response
+//       console.log('Data deleted successfully:', response);
+//       // Optionally, reset the form or perform any necessary actions after successful delete
+//     });
+// }
+
+// fetch() {
+//   const apiUrl = 'http://192.168.1.80:9134/api/Data/Fetch'; // Assuming the endpoint for fetch
+
+//   // Make HTTP GET request to fetch data
+//   this.http.get(apiUrl)
+//     .pipe(
+//       catchError(error => {
+//         // Handle error
+//         console.error('Error occurred:', error);
+//         return throwError(error);
+//       })
+//     )
+//     .subscribe(response => {
+//       // Handle success response
+//       console.log('Fetched data:', response);
+//       // Optionally, update UI or perform any necessary actions with fetched data
+//     });
+// }
 }
